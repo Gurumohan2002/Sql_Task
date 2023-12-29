@@ -98,8 +98,7 @@ dpt_allotment>(select min(dpt_allotment) from department));
 +-----------+-----------+
 
 
-Select e.emp_fname,e.emp_lname from employee as e join department as d 
-on e.emp_dept=d.dpt_code ;
+
 
 
 

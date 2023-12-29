@@ -79,22 +79,24 @@ having c.grade is not null and o.purch_amt>2000;
 +---------------+----------+-------+------------+--------+------------+-----------+
 
 
-SELECT c.cust_name, c.city, o.ord_no, o.ord_date, o.purch_amt
+SELECT c.cust_name, c.city, o.ord_no, o.ord_date, o.purch_amt as Order_Amount
 FROM customer AS c
-INNER JOIN orders AS o ON c.salesman_id = o.salesman_id;
+INNER JOIN orders AS o ON c.customer_id = o.customer_id
+where c.grade is not null;
 
 
-
-
-cust_name	   city		    ord_no	ord_date	Order Amount
-Nick Rimando	New York	70002	2012-10-05	65.26
-Geoff Cameron	Berlin		70004	2012-08-17	110.50
-Brad Davis	    New York	70005	2012-07-27	2400.60
-Nick Rimando	New York	70008	2012-09-10	5760.00
-Fabian Johnson	Paris		70010	2012-10-10	1983.43
-Geoff Cameron	Berlin	    70003	2012-10-10	2480.40
-Jozy Altidor	Moscow	    70011	2012-08-17	75.29
-Nick Rimando	New York	70013	2012-04-25	3045.60
-Graham Zusi	    California	70001	2012-10-05	150.50
-Graham Zusi	    California	70007	2012-09-10	948.50
-Julian Green	London	    70012	2012-06-27	250.45
++----------------+------------+--------+------------+--------------+
+| cust_name      | city       | ord_no | ord_date   | Order_Amount |
++----------------+------------+--------+------------+--------------+
+| Graham Zusi    | California |  70001 | 2012-10-05 |          151 |
+| Nick Rimando   | New York   |  70002 | 2012-10-05 |           65 |
+| Geoff Cameron  | Berlin     |  70003 | 2012-10-10 |         2480 |
+| Geoff Cameron  | Berlin     |  70004 | 2012-08-17 |          111 |
+| Brad Davis     | New York   |  70005 | 2012-07-27 |         2401 |
+| Graham Zusi    | California |  70007 | 2012-09-10 |          949 |
+| Nick Rimando   | New York   |  70008 | 2012-09-10 |         5760 |
+| Fabian Johnson | Paris      |  70010 | 2012-10-10 |         1983 |
+| Jozy Altidor   | Moscow     |  70011 | 2012-08-17 |           75 |
+| Julian Green   | London     |  70012 | 2012-06-27 |          250 |
+| Nick Rimando   | New York   |  70013 | 2012-04-25 |         3046 |
++----------------+------------+--------+------------+--------------+
